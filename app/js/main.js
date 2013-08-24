@@ -71,13 +71,13 @@ Instacloser.prototype.drawPics = function(res) {
 			dtext = d.toFixed(2) + 'Km';
 		}
 
-		distance = $('<p>' + dtext + '</p>');
+		distance = $('<div class="local">' + picture.user.username + ' is at ' + dtext + '</div>');
 
-		img.appendTo(item);
 		distance.appendTo(item);
+		img.appendTo(item);
 
 		$('.pictures-list ul').append(item);
-		// console.log(picture);
+		console.log(picture);
 	});
 	this.flipBox.toggle();
 };
