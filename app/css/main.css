@@ -2,3 +2,6 @@ html, body{
 	height: 100%;
 	width: 100%;
 }
+
+.login{ background-color: #f90; height: 100%; }
+.pictures-list{ background-color: #000; height: 100%; }
