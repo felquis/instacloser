@@ -14,8 +14,12 @@ Instacloser.prototype.init = function () {
 	this.getAccessToken();
 	this.getLocalization();
 
-	if(this.isLoggedIn()){
+	if (this.isLoggedIn()){
+		$('.facebookG').removeClass('hidden');
 		this.asyncPics();
+	} else {
+		$('.main-box').addClass('login-box');
+		$('.facebookG').addClass('hidden');
 	}
 }
 Instacloser.prototype.getAccessToken = function() {
@@ -62,6 +66,7 @@ Instacloser.prototype.drawPics = function(res) {
 		console.log(picture.images);
 	});
 	this.flipBox.toggle();
+	$('.facebookG').removeClass('hidden');
 };
 
 
