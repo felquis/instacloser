@@ -31,38 +31,41 @@ html, body {
     display: none;
 }
 
+/*
+    Página de login
+*/
 .login-state .login-state {
-    display: flex;
-
+    display: block;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
-
-    justify-content: center;
-    align-items: center;
 }
 
 .login-state .login-button {
-    background: url("../img/instagram-button.png");
+    background: url("./../img/instagram-button.png");
     width: 196px;
     height: 38px;
+    margin: 50% auto 0;
     text-indent: -9999px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
 }
 
+/*
+    Página da lista de fotos
+*/
+.photo-list-state .photo-list-state {
+    display: block;
+}
+
+/*
+    Página de loading
+*/
 .loading-state .facebookG {
-    display: flex;
-    justify-content: center;
-}
-
-.loading-state .facebookG .ico {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    margin: 30% auto 0;
+    position: relative;
+    width: 128px;
 }
 
 .loading-state .content-wrap {
