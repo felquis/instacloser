@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
   	"requirejs": "~2.1.8",
-    "brick": "~1.0.4beta",
+    "brick": "1.0.4beta",
     "zepto": "~1.0.0"
   }
 }
