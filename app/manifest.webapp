@@ -11,8 +11,8 @@
         "128": "/images/logo128.png"
     },
     "developer": {
-        "name": "Robert Nyman",
-        "url": "http://robertnyman.com"
+        "name": "Felquis Gimenes",
+        "url": "http://felquis.com"
     },
     "installs_allowed_from": ["*"],
     "default_locale": "en",
