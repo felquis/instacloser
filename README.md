@@ -5,8 +5,8 @@ instacloser
 
 ```shell
 npm install
-npm install grunt-cli -g
-npm install bower -g
+npm install -g grunt-cli
+npm install -g bower
 ```
 
 ### Para criar um servidor com o grunt:
