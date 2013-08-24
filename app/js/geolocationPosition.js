@@ -1,4 +1,4 @@
-function geolocation() {
+function geolocation(f) {
     "use strict";
 
     if (!navigator.geolocation) {
@@ -11,7 +11,12 @@ function geolocation() {
     }
 
     function success(position) {
-        return [position.coords.latitude, position.coords.longitude];
+        var geo = {
+            "lat":position.coords.latitude, 
+            "lng":position.coords.longitude
+        };
+        
+        f(geo);
     }
 
     function error() {
