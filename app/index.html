@@ -20,17 +20,35 @@
 </head>
 
 <body>
-    <x-layout>
-        <header>
-            I'm the header!
-        </header>
-        <section>
-            I'm the main body! <p>(I will automatically overflow if necessary.)</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p>
-        </section>
-        <footer>
-            I'm the footer!
-        </footer>
-    </x-layout>
+    <header class="header">
+        <span>InstaCloser</span>
+    </header>
+
+    <!--
+        login-state
+        loading-state
+        photo-list-state
+    -->
+    <section class="playground login-state">
+        <div class="content-wrap">
+            <div class="login-state">
+                <a href="#" class="login-button">Sign in with Instagram</a>
+            </div>
+
+            <div class="photo-list-state">
+
+            </div>
+        </div>
+
+        <div class="facebookG">
+            <div class="ico">
+                <div id="blockG_1" class="facebook_blockG"></div>
+                <div id="blockG_2" class="facebook_blockG"></div>
+                <div id="blockG_3" class="facebook_blockG"></div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- <script type="text/javascript" src="js/base.js"></script> -->
     <!-- <script type="text/javascript" src="js/webapp.js"></script> -->
