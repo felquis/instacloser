@@ -30,11 +30,14 @@ Oculta todos os states
 */
 .login-button {
     background: url("./../img/instagram-button.png");
-    display: block;
+    display: none;
     height: 38px;
     margin: 40% auto 0;
     text-indent: -9999px;
     width: 196px;
+}
+.login-box .login-button{
+	display: block;
 }
 .pictures-list ul {
     list-style: none;
@@ -97,13 +100,17 @@ Oculta todos os states
     Efeito de loading com CSS3
 */
 .facebookG {
-    width: 100%;
+    width: 128px;
     height: 100%;
     position: absolute;
-    top: 0;
-    display: none;
+    top: 50%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -75px;
 }
-
+.facebookG.hidden{
+	display: none;
+}
 .facebookG .ico {
     width:128px;
 }
