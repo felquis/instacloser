@@ -4,15 +4,24 @@ document.addEventListener('DOMComponentsLoaded', function(){
 
 
 function Instacloser () {
+	var self = this;
 	this.flipBox = document.getElementById('flipbox');
     this.accessToken = '';
     this.lat = null;
     this.lng = null;
+
+	$('.reload').on('click', function(ev){
+		ev.preventDefault();
+		self.go();
+	});
+
     this.init();
 };
 Instacloser.prototype.init = function () {
 	this.getAccessToken();
 	this.getLocalization();
+}
+Instacloser.prototype.go = function () {
 	if (this.isLoggedIn()){
 		$('.facebookG').removeClass('hidden');
 		this.asyncPics();
@@ -62,7 +71,7 @@ Instacloser.prototype.drawPics = function(res) {
 	var img, item;
 	var self = this;
 	$.each(res.data, function (i, picture) {
-		item = $('<li>').addClass('picture-list-item');
+		item = $('<li>').addClass('pictures-list-item');
 		img = $('<img>').attr('src', picture.images.standard_resolution.url);
 
 		// calculating distance
@@ -74,7 +83,7 @@ Instacloser.prototype.drawPics = function(res) {
 			dtext = d.toFixed(2) + 'Km';
 		}
 
-		distance = $('<div class="local">' + picture.user.username + ' is at ' + dtext + '</div>');
+		distance = $('<div class="local">@' + picture.user.username + ' is ' + dtext + ' away</div>');
 
 		distance.appendTo(item);
 		img.appendTo(item);
