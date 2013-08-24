@@ -55,8 +55,8 @@ Instacloser.prototype.asyncPics = function() {
 Instacloser.prototype.drawPics = function(res) {
 	var img, item;
 	$.each(res.data, function (i, picture) {
-		item = $('<li>').addClass('picture-list-item');
-		img = $('<img>').attr('src', picture.images.thumbnail.url);
+		item = $('<li>').addClass('pictures-list-item');
+		img = $('<img>').attr('src', picture.images.standard_resolution.url);
 		img.appendTo(item);
 		$('.pictures-list ul').append(item);
 		console.log(picture.images);
