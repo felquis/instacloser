@@ -13,13 +13,10 @@ function Instacloser () {
 Instacloser.prototype.init = function () {
 	this.getAccessToken();
 	this.getLocalization();
-	if (this.isLoggedIn()){
-		$('.facebookG').removeClass('hidden');
-		this.asyncPics();
-	} else {
-		$('.main-box').addClass('login-box');
-		$('.facebookG').addClass('hidden');
-	}
+
+	// if(this.isLoggedIn()){
+	// 	this.asyncPics();
+	// }
 }
 Instacloser.prototype.getAccessToken = function() {
 	var hash = getHash();
@@ -83,7 +80,6 @@ Instacloser.prototype.drawPics = function(res) {
 		console.log(picture);
 	});
 	this.flipBox.toggle();
-	$('.facebookG').removeClass('hidden');
 };
 Instacloser.prototype.calcDistance = function(lat, lng, unit) {
 
