@@ -24,6 +24,13 @@ html, body {
     color: #fff;
 }
 
+/*
+    Oculta todos os states
+*/
+.content-wrap .state {
+    display: none;
+}
+
 .login-state .login-state {
     display: flex;
 
