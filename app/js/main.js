@@ -60,7 +60,7 @@ Instacloser.prototype.drawPics = function(res) {
 	var self = this;
 	$.each(res.data, function (i, picture) {
 		item = $('<li>').addClass('picture-list-item');
-		img = $('<img>').attr('src', picture.images.thumbnail.url);
+		img = $('<img>').attr('src', picture.images.standard_resolution.url);
 
 		// calculating distance
 		d = self.calcDistance(picture.location.latitude, picture.location.longitude, 'K');
@@ -72,7 +72,7 @@ Instacloser.prototype.drawPics = function(res) {
 		}
 
 		distance = $('<p>' + dtext + '</p>');
-		
+
 		img.appendTo(item);
 		distance.appendTo(item);
 
