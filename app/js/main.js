@@ -15,7 +15,6 @@ Instacloser.prototype.init = function () {
 	this.getLocalization();
 
 	if(this.isLoggedIn()){
-		alert(0);
 		this.asyncPics();
 	}
 }
@@ -54,10 +53,13 @@ Instacloser.prototype.asyncPics = function() {
 	});
 };
 Instacloser.prototype.drawPics = function(res) {
-	var img;
+	var img, item;
 	$.each(res.data, function (i, picture) {
+		item = $('<li>').addClass('picture-list-item');
 		img = $('<img>').attr('src', picture.images.thumbnail.url);
-		$('.pictures-list').append(img);
+		img.appendTo(item);
+		$('.pictures-list ul').append(item);
+		console.log(picture.images);
 	});
 	this.flipBox.toggle();
 };

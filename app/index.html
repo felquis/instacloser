@@ -15,14 +15,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <title>InstaCloser</title>
     <link rel="stylesheet" type="text/css" href="/vendor/components/brick/dist/brick.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <title>InstaCloser</title>
 </head>
-
 <body>
     <x-layout>
-        <x-appbar heading="InstaCloser">
+        <x-appbar heading="InstaCloser" class="header">
             <div>=</div>
             <header></header>
             <div>+</div>
@@ -31,15 +30,14 @@
         <section>
             <x-flipbox id="flipbox">
                 <div class="login">
-                    <a id="instalogin" href="https://instagram.com/oauth/authorize/?client_id=fb8cffd8c00b42ea8105109388afe0b8&redirect_uri=http://localhost:9001/&response_type=token">Instagram login</a>
+                    <a id="instalogin" class="login-button" href="https://instagram.com/oauth/authorize/?client_id=fb8cffd8c00b42ea8105109388afe0b8&redirect_uri=http://localhost:9001/&response_type=token">Instagram login</a>
                 </div>
                 <div class="pictures-list">
+                    <ul>
+                    </ul>
                 </div>
             </x-flipbox>
         </section>
-        <footer>
-            I'm the footer!
-        </footer>
     </x-layout>
     <!-- <script type="text/javascript" src="js/base.js"></script> -->
     <!-- <script type="text/javascript" src="js/webapp.js"></script> -->
@@ -50,10 +48,5 @@
     <script src="/js/main.js"></script>
     <!-- script src="/vendor/components/requirejs/require.js"></script -->
     <!--script src="/js/require.config.js"></script-->
-
-    <!--
-        Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
-    -->
-
 </body>
 </html>
