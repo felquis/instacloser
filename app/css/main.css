@@ -1,7 +1,4 @@
-x-layout > header, x-layout > footer{
-    padding: 0;
-    background-color: orange;
-    color: white;
-    font-weight: bold;
-    text-align: center;
+html, body{
+	height: 100%;
+	width: 100%;
 }

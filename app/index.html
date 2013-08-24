@@ -15,28 +15,40 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="/vendor/component/brick/bdist/brick.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/components/brick/dist/brick.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <title>InstaCloser</title>
 </head>
 
 <body>
     <x-layout>
-        <header>
-            I'm the header!
-        </header>
+        <x-appbar heading="InstaCloser">
+            <div>=</div>
+            <header></header>
+            <div>+</div>
+            <div>?</div>
+        </x-appbar>
         <section>
-            I'm the main body! <p>(I will automatically overflow if necessary.)</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p><p>Filler text</p>
+            <x-flipbox>
+                <div class="login">
+                    <p>ENTRAR</p>
+                </div>
+                <div>
+                    
+                </div>
+            </x-flipbox>
         </section>
         <footer>
             I'm the footer!
         </footer>
     </x-layout>
-
     <!-- <script type="text/javascript" src="js/base.js"></script> -->
     <!-- <script type="text/javascript" src="js/webapp.js"></script> -->
     <!-- <script type="text/javascript" src="js/offline.js"></script> -->
-
-    <script src="/vendor/component/brick/brick.js"></script>
+    <script src="/vendor/components/brick/dist/brick.js"></script>
+    <script src="/js/main.js"></script>
+    <!-- script src="/vendor/components/requirejs/require.js"></script -->
+    <!--script src="/js/require.config.js"></script-->
 
     <!--
         Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
