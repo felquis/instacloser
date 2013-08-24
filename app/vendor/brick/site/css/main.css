@@ -1,0 +1,357 @@
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font: normal 16px "Open Sans", sans-serif;
+  line-height: 1.5em;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+article {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1em;
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  margin: 1.5rem 0;
+}
+
+h1 {
+  line-height: 1.5em;
+  font-size: 200%;
+}
+
+h2 {
+  line-height: 1.5rem;
+}
+
+.moz {
+  position: absolute;
+  top: -1px;
+  right: -11px;
+  text-align: center;
+}
+.moz img {
+  opacity: .8;
+  height: 34px;
+}
+
+#mark {
+  white-space: nowrap;
+  margin: .5em 0 -.5em 0;
+}
+
+.site-header {
+  position: relative;
+  padding-top: 2em;
+}
+
+header h1 {
+  font-size: 400%;
+}
+
+.logo {
+  width: 64px;
+  margin: 0 8px -8px 0;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+header small {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+  margin-left: 4px;
+}
+
+header {
+  text-align: center;
+}
+
+section, footer {
+  position: relative;
+  clear: left;
+  margin: 3em 0;
+}
+
+/* clearfix */
+section:after, footer:after{
+  content: "";
+  display: block;
+  clear: left;
+}
+
+.site-nav a {
+  margin-right: 1em;
+}
+
+header .site-nav {
+  position: absolute;
+  left: 0;
+  top: 1em;
+}
+
+footer {
+  min-height: 2em;
+  padding-right: 84px;
+  margin-top: 5em;
+  clear: left;
+}
+
+section.demo-wrap, section.main-sect{
+  border-top: 1px solid grey;
+}
+.demo-wrap.clean {
+  border: 0;
+}
+/* centers demo items in the viewport for demo site;
+ * exclude appbar because it should be at the top of the demo;
+ * exclude layout because setting absolute position on flexbox causes 
+ * weirdness in FF18 where the flex item render doesn't override the 
+ * height 0 fix in layout.css */
+.demo-wrap .demo > *:only-child:not(x-appbar):not(x-layout){
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.demo-wrap .demo > form{
+    box-shadow: 1px 1px 4px grey;
+    background-color: rgba(255,255,255,0.5);
+    background-image: none;
+    padding: 0.5em;
+}
+
+.two-up {
+  clear: none;
+  width: 48%;
+  width: calc(50% - 1em);
+  float: left;
+}
+.two-up:nth-of-type(2n) {
+  margin-left: 2em;
+}
+.two-up h2 {
+  text-align: center;
+}
+
+a {
+  color: #600;
+}
+a:hover {
+  color: #a00;
+}
+
+.download {
+  background: url('../img/zip.png') no-repeat;
+  background-size: 64px;
+  display: inline-block;
+  height: 64px;
+  margin: 2em 3em 0 0;
+  padding-left: 90px;
+  white-space: nowrap;
+}
+.download h3 {
+  margin: .3rem 0;
+  text-indent: -.1rem;
+  font-size: 150%;
+}
+
+.demo {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 240px;
+  height: 360px;
+  margin: 1em auto;
+  border: 10px solid #eee;
+  box-shadow: 0 0 0 3px #222;
+  border-width: 40px 15px 60px;
+  border-radius: 20px;
+  position: relative;
+
+  background: #f2d6b9 url("../img/retina_wood.png") repeat;
+}
+
+/* fake iphone button */
+.demo:after {
+  content: '';
+
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 103%;
+  left: 43.75%;
+  left: calc(50% - 15px);
+  background: #d8d8d8;
+  border-radius: 20px;
+  box-shadow: 0 0 0 2px #222;
+}
+
+.demo[data-src] {
+  background: none;
+}
+
+.demo iframe {
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #222;
+  height: 480px;
+  opacity: 0;
+  -webkit-transform: scale(.75);
+  transform: scale(.75);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transition: .5s opacity ease-out;
+  transition: .5s opacity ease-out;
+  width: 320px;
+}
+
+.markup-wrap{
+  margin: .5em auto;
+}
+
+.markup-wrap > *:first-child{
+  margin-top: 0;
+}
+
+pre.prettyprint{
+  text-align: left;
+  overflow: auto;
+  padding: .5em;
+  font-size: .9em;
+}
+
+.markup-wrap pre.prettyprint,
+.markup-wrap .code-box{
+    text-align: left;
+    margin: 0;
+    width: 100%;
+    max-height: 20em;
+
+    overflow: auto;
+    font-size: .9em;
+    box-shadow: inset 1px 1px 4px grey;
+    padding: .5em;
+}
+
+.markup-wrap .code-box code{
+    display: block;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.prettybutton{
+    display: inline-block;
+    padding: .25em .5em;
+    border: 1px solid grey;
+    border-top-color: #aaa;
+    border-bottom-color: #777;
+    border-radius: 4px;
+    vertical-align: middle;
+    font: inherit;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-image: -o-linear-gradient(top, white, white 25%, #d9d9d9);
+    background-image: -ms-linear-gradient(top, white, white 25%, #d9d9d9);
+    background-image: -moz-linear-gradient(top, white, white 25%, #d9d9d9);
+    background-image: -webkit-linear-gradient(top, white, white 25%, #d9d9d9);
+    background-image: linear-gradient(top, white, white 25%, #d9d9d9);
+    text-shadow: 1px 1px #fff;
+    cursor: pointer;
+}
+
+.prettybutton:hover{
+    background-position: 0 1em;
+}
+
+.prettybutton:active{
+    background-image: none;
+    background-color: #eee;
+    box-shadow: inset 1px 1px 2px #888;
+}
+
+progress {
+  display: none;
+}
+
+#zip {
+  display: none;
+}
+
+#byob label {
+  display: block;
+  padding: .5em 1em;
+  background: #f8f8f8;
+  cursor: pointer;
+  margin-top: 1em;
+}
+#byob input[type=checkbox] {
+  float: right;
+}
+
+a.top {
+  clear: both;
+  float: right;
+}
+
+@media screen and (max-width: 800px) {
+  .two-up {
+    float: none;
+    width: 100%;
+    margin: 3em 0;
+    padding: 0;
+  }
+  .two-up + .two-up {
+    margin-left: 0;
+  }
+  .demo {
+    -webkit-transform: scale(.6);
+    transform: scale(.6);
+    margin: -70px auto;
+  }
+  .demo iframe {
+    pointer-events: none;
+  }
+  section {
+    margin: 1em 0;
+  }
+
+  header h1 {
+    font-size: 250%;
+  }
+
+  .markup-wrap{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  header {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  article {
+    max-width: 800px;
+  }
+}
