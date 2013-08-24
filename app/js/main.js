@@ -1,3 +1,3 @@
 document.addEventListener('DOMComponentsLoaded', function(){
-    console.log('Começou!');
+    console.log('Start');
 });
