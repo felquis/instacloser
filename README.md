@@ -8,4 +8,3 @@ npm install
 npm install grunt-cli -g
 npm install bower -g
 ```
-
