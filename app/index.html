@@ -29,12 +29,11 @@
             <div>?</div>
         </x-appbar>
         <section>
-            <x-flipbox>
+            <x-flipbox id="flipbox">
                 <div class="login">
-                    <p>ENTRAR</p>
+                    <a id="instalogin" href="https://instagram.com/oauth/authorize/?client_id=fb8cffd8c00b42ea8105109388afe0b8&redirect_uri=http://localhost:9001/&response_type=token">Instagram login</a>
                 </div>
-                <div>
-                    
+                <div class="pictures-list">
                 </div>
             </x-flipbox>
         </section>
@@ -46,6 +45,8 @@
     <!-- <script type="text/javascript" src="js/webapp.js"></script> -->
     <!-- <script type="text/javascript" src="js/offline.js"></script> -->
     <script src="/vendor/components/brick/dist/brick.js"></script>
+    <script type="text/javascript" src="vendor/components/zepto/zepto.js"></script>
+    <script type="text/javascript" src="js/geolocationPosition.js"></script>
     <script src="/js/main.js"></script>
     <!-- script src="/vendor/components/requirejs/require.js"></script -->
     <!--script src="/js/require.config.js"></script-->
