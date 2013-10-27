@@ -4,11 +4,7 @@
     "launch_path": "/index.html",
     "description": "Fotoxinhas do Instagram",
     "icons": {
-        "16": "/images/logo16.png",
-        "32": "/images/logo32.png",
-        "48": "/images/logo48.png",
-        "64": "/images/logo64.png",
-        "128": "/images/logo128.png"
+        "128": "/img/logo128.jpg"
     },
     "developer": {
         "name": "Felquis Gimenes",
