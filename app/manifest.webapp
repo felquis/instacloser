@@ -11,6 +11,7 @@
         "name": "Felquis Gimenes",
         "url": "http://felquis.com"
     },
+    "fullscreen": "true",
     "installs_allowed_from": ["*"],
     "default_locale": "en",
     "permissions": {
