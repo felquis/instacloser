@@ -1,7 +1,6 @@
-document.addEventListener('DOMComponentsLoaded', function(){
-    var app = new Instacloser();
-});
-
+// document.addEventListener('DOMComponentsLoaded', function(){
+//     var app = new Instacloser();
+// });
 
 function Instacloser () {
 	var self = this;

@@ -1,9 +1,7 @@
 {
   "name": "Instacloser",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {
-  	"requirejs": "~2.1.8",
-    "zepto": "~1.0.0",
-    "brick": "1.0beta8"
+    "zepto": "~1.0.0"
   }
 }
