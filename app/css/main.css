@@ -2,6 +2,9 @@ body {
     margin: 0;
     font-family: Verdana;
     overflow: hidden;
+}
+
+.bg-pattern {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAIAAABvrngfAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjVGRDkxNUMwQ0REMTFFM0ExMzQ5MzFBMTNGNjFGODIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjVGRDkxNUQwQ0REMTFFM0ExMzQ5MzFBMTNGNjFGODIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCNUZEOTE1QTBDREQxMUUzQTEzNDkzMUExM0Y2MUY4MiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCNUZEOTE1QjBDREQxMUUzQTEzNDkzMUExM0Y2MUY4MiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps7aLXEAAABPSURBVHjaJIzbDcAwCAPBEPZfM1IXQCUPt/jvrLN1zsfMRGTvDSAzcc4hr7WaVdUZVi0CCpjTrypyRIwRHDl9AquqV4QWvtXP5T769AowANCuI+baOGCcAAAAAElFTkSuQmCC);
 }
 
@@ -14,6 +17,8 @@ body {
     padding: 2.5% 0;
     text-align: center;
     width: 100%;
+    position: relative;
+    z-index: 10;
 
     background: #37373b; /* Old browsers */
     background: -moz-linear-gradient(top,  #59595e 0%, #464649 13%, #37373b 51%, #464649 97%, #37373b 100%);
@@ -32,4 +37,176 @@ body {
 .ic-content {
     overflow: auto;
     height: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+/*
+    Loading Section
+*/
+.section-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.section {
+    display: none;
+}
+
+.section.show {
+    display: block;
+}
+
+/*
+    Section Login
+*/
+.section-login {
+
+}
+
+
+/*
+    Efeito de loading com CSS3
+*/
+.facebook-loading {
+    width: 128px;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -75px;
+    left: 50%;
+    margin-left: -75px;
+}
+
+.facebook-loading.hidden{
+    display: none;
+}
+
+.facebook-loading .ico {
+    width:128px;
+}
+
+.facebook-loading .facebook-block {
+    background-color:#EBEBEB;
+    border:3px solid #37373B;
+    float:left;
+    height:91px;
+    margin-left:7px;
+    width:24px;
+    opacity:0.1;
+    -moz-animation-name:bounceG;
+    -moz-animation-duration:0.8s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-direction:linear;
+    -moz-transform:scale(0.7);
+    -webkit-animation-name:bounceG;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:linear;
+    -webkit-transform:scale(0.7);
+    -ms-animation-name:bounceG;
+    -ms-animation-duration:0.8s;
+    -ms-animation-iteration-count:infinite;
+    -ms-animation-direction:linear;
+    -ms-transform:scale(0.7);
+    -o-animation-name:bounceG;
+    -o-animation-duration:0.8s;
+    -o-animation-iteration-count:infinite;
+    -o-animation-direction:linear;
+    -o-transform:scale(0.7);
+    animation-name:bounceG;
+    animation-duration:0.8s;
+    animation-iteration-count:infinite;
+    animation-direction:linear;
+    transform:scale(0.7);
+}
+
+.facebook-loading .block-1 {
+    -moz-animation-delay:0.24000000000000005s;
+    -webkit-animation-delay:0.24000000000000005s;
+    -ms-animation-delay:0.24000000000000005s;
+    -o-animation-delay:0.24000000000000005s;
+    animation-delay:0.24000000000000005s;
+}
+
+.facebook-loading .block-2 {
+    -moz-animation-delay:0.32s;
+    -webkit-animation-delay:0.32s;
+    -ms-animation-delay:0.32s;
+    -o-animation-delay:0.32s;
+    animation-delay:0.32s;
+}
+
+.facebook-loading .block-3 {
+    -moz-animation-delay:0.4s;
+    -webkit-animation-delay:0.4s;
+    -ms-animation-delay:0.4s;
+    -o-animation-delay:0.4s;
+    animation-delay:0.4s;
+}
+
+@-moz-keyframes bounceG {
+    0% {
+        -moz-transform:scale(1.2);
+        opacity:1
+    }
+
+    100%{
+        -moz-transform:scale(0.7);
+        opacity:0.1
+    }
+}
+
+@-webkit-keyframes bounceG {
+    0% {
+        -webkit-transform:scale(1.2);
+        opacity:1
+    }
+
+    100% {
+        -webkit-transform:scale(0.7);
+        opacity:0.1
+    }
+
+}
+
+@-ms-keyframes bounceG {
+    0% {
+        -ms-transform:scale(1.2);
+        opacity:1
+    }
+
+    100% {
+        -ms-transform:scale(0.7);
+        opacity:0.1
+    }
+}
+
+@-o-keyframes bounceG {
+    0% {
+        -o-transform:scale(1.2);
+        opacity:1
+    }
+
+    100% {
+        -o-transform:scale(0.7);
+        opacity:0.1
+    }
+}
+
+@keyframes bounceG {
+    0% {
+        transform:scale(1.2);
+        opacity:1
+    }
+
+    100% {
+        transform:scale(0.7);
+        opacity:0.1
+    }
 }

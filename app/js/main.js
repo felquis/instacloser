@@ -29,11 +29,34 @@
                     }, 300);
                 });
             }
-        };
+        },
+        sections = {
+            elements: document.querySelectorAll('.section'),
+            current: '',
+            hideAll: function () {
+                querySelectorToArray(this.elements).forEach(function (element) {
+                    element.classList.remove('show');
+                });
+            },
+            show: function (className) {
+                this.current = querySelectorToArray(this.elements).map(function (element) {
+                    if (element.classList.contains(className) === true) {
+                        return element;
+                    }
+                })[0];
+
+                this.current.classList.add('show');
+            }
+        },
+        querySelectorToArray = function (querySelector) {
+            return Array.prototype.slice.call(querySelector);
+        }
 
     /*
         Init functions
     */
     setContentHeight.set();
     setContentHeight.setOnResize();
+
+    sections.show('section-loading');
 }(document, window));
