@@ -1,7 +1,0 @@
-{
-  "name": "Instacloser",
-  "version": "0.1.0",
-  "dependencies": {
-    "zepto": "~1.0.0"
-  }
-}
