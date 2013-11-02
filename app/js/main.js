@@ -3,6 +3,9 @@
 
     var $icHeader = document.querySelector('.ic-header'),
         $icContent = document.querySelector('.ic-content'),
+        querySelectorToArray = function (querySelector) {
+            return Array.prototype.slice.call(querySelector);
+        },
 
         /*
             Set .ic-content height based in .ic-header height to simulate position fixed
@@ -47,10 +50,7 @@
 
                 this.current.classList.add('show');
             }
-        },
-        querySelectorToArray = function (querySelector) {
-            return Array.prototype.slice.call(querySelector);
-        }
+        };
 
     /*
         Init functions
