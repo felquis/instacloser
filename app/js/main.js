@@ -42,7 +42,7 @@
                 });
             },
             show: function (className) {
-                this.current = querySelectorToArray(this.elements).map(function (element) {
+                this.current = querySelectorToArray(this.elements).filter(function (element) {
                     if (element.classList.contains(className) === true) {
                         return element;
                     }
