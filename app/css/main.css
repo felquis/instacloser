@@ -70,6 +70,52 @@ body {
 }
 
 /*
+    Lista de fotos
+*/
+.pictures-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Item da lista */
+.pictures-list-item {
+    width: 98%;
+    margin: 4px auto 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 3px #000
+}
+
+.pictures-list .local {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 2px 0 2px 30px;
+    width: 100%;
+    font-family: Verdana;
+    font-size: 0.9em;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.pictures-list-item .local:before {
+    content: "";
+    background: url("./../img/sprite.png") no-repeat 0 -95px;
+    width: 10px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 12px;
+}
+
+.pictures-list-item img {
+    width: 100%;
+    margin: 0;
+    display: block;
+}
+
+/*
     Instagram Login button
 */
 .login-button {

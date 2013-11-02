@@ -58,5 +58,5 @@
     setContentHeight.set();
     setContentHeight.setOnResize();
 
-    sections.show('section-login');
+    sections.show('section-photo-list');
 }(document, window));
