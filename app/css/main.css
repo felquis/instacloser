@@ -66,9 +66,19 @@ body {
     Section Login
 */
 .section-login {
-
+    height: 100%;
 }
 
+/*
+    Instagram Login button
+*/
+.login-button {
+    background: url("../img/instagram-button.png") center center no-repeat;
+    display: block;
+    height: 100%;
+    text-indent: -9999px;
+    width: 100%;
+}
 
 /*
     Efeito de loading com CSS3

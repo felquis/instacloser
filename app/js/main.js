@@ -58,5 +58,5 @@
     setContentHeight.set();
     setContentHeight.setOnResize();
 
-    sections.show('section-loading');
+    sections.show('section-login');
 }(document, window));
