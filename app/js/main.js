@@ -42,6 +42,8 @@
                 });
             },
             show: function (className) {
+                sections.hideAll();
+
                 this.current = querySelectorToArray(this.elements).filter(function (element) {
                     if (element.classList.contains(className) === true) {
                         return element;
@@ -49,6 +51,20 @@
                 })[0];
 
                 this.current.classList.add('show');
+            }
+        },
+        instagram = {
+            init: function () {
+                if (instagram.verificaSeTemUsuarioLogado()) {
+                    console.log('Carregar fotos!');
+                } else {
+                    console.log('Exibe: login');
+                    sections.show('section-login');
+                }
+            },
+            verificaSeTemUsuarioLogado: function () {
+                console.log('Verifica: login');
+                return !!localStorage['ic-instagram-token'];
             }
         };
 
@@ -58,5 +74,6 @@
     setContentHeight.set();
     setContentHeight.setOnResize();
 
-    sections.show('section-photo-list');
+    sections.show('section-loading');
+    instagram.init();
 }(document, window));
