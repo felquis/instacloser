@@ -1,16 +1,16 @@
-instacloser
+instaCloser
 ===========
 
-##Instalando o grunt e o bower:
+Veja fotos no Instagram que foram tiradas próximas de onde você está, instale o app no [Firefox MarketPlace](https://marketplace.firefox.com/app/instacloser/)
 
-```shell
-npm install
-npm install -g grunt-cli
-npm install -g bower
-```
+## Rodando o projeto em localhost
 
-### Para criar um servidor com o grunt:
+Instale o [NodeJS](http://nodejs.org/) e [GIT](http://git-scm.com/)
 
-```shell
-grunt server
-```
+E siga os passos
+* `npm install -g grunt-cli`
+* `npm install -g bower`
+* `npm install`
+* `grunt`
+
+E finalmente acesse **localhost:8080**
