@@ -2,3 +2,5 @@
 .DS_Store
 /app/vendor/components/*
 .log
+.temp/
+build/

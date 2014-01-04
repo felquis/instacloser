@@ -15,7 +15,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>InstaCloser</title>
+        <!-- @if NODE_ENV='production' -->
+            <title>InstaCloser</title>
+        <!-- @endif -->
+        <!-- @if NODE_ENV='development' -->
+            <title>Development - InstaCloser</title>
+        <!-- @endif -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body class="bg-pattern">
@@ -35,7 +40,7 @@
         </section>
 
         <section class="section section-login bg-pattern">
-            <a class="login-button" href="https://instagram.com/oauth/authorize/?client_id=05d5219366e24a3bb9f4d7eec6427e52&amp;redirect_uri=http://instacloser.joel-ipsum.com/&amp;response_type=token">Instagram login</a>
+            <a class="login-button" href="https://instagram.com/oauth/authorize/?client_id=<!-- @echo instagram_client_id -->&amp;redirect_uri=<!-- @echo instagram_redirect_uri -->&amp;response_type=token">Instagram login</a>
         </section>
 
         <section class="section section-photo-list bg-pattern">

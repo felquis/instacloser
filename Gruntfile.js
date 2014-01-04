@@ -11,6 +11,14 @@ module.exports = function (grunt) {
                     base: 'app/',
                     hostname: '*'
                 }
+            },
+            dev: {
+                options: {
+                    port: 8080,
+                    keepalive : true,
+                    base: '.temp/',
+                    hostname: '*'
+                }
             }
         },
         jslint: {
@@ -29,12 +37,64 @@ module.exports = function (grunt) {
                     devel: true
                 }
             }
+        },
+        env: {
+            dev: {
+                NODE_ENV: 'development'
+            },
+            build: {
+                NODE_ENV: 'production'
+            }
+        },
+        preprocess : {
+            options: {
+                context : {
+                    DEBUG: true
+                }
+            },
+            dev: {
+                src : 'app/index.html',
+                dest : '.temp/index.html',
+                options: {
+                    context : {
+                        instagram_client_id: 'a2dadbd1d44f4e4a869d3fd3ab8543fc',
+                        instagram_redirect_uri: 'http://localhost:8080/'
+                    }
+                }
+            },
+            build: {
+                src : 'app/index.html',
+                dest : '.temp/index.html',
+                options: {
+                    context : {
+                        instagram_client_id: '05d5219366e24a3bb9f4d7eec6427e52',
+                        instagram_redirect_uri: 'http://instacloser.joel-ipsum.com/'
+                    }
+                }
+            }
+        },
+        copy: {
+            dev: {
+                expand: true,
+                cwd: 'app/',
+                src: '**',
+                dest: '.temp/'
+            },
+            build: {
+                expand: true,
+                cwd: 'app/',
+                src: '**',
+                dest: 'build/'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-jslint');
+    grunt.loadNpmTasks('grunt-preprocess');
+    grunt.loadNpmTasks('grunt-env');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('server', ['jslint', 'connect:server']);
-    grunt.registerTask('build', ['jslint']);
+    grunt.registerTask('default', ['env:dev', 'jslint', 'copy:dev', 'preprocess:dev', 'connect:dev']);
+    grunt.registerTask('build', ['env:build', 'jslint', 'copy:build', 'preprocess:build']);
 };
