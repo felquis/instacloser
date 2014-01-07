@@ -55,16 +55,75 @@
         },
         instagram = {
             init: function () {
-                if (instagram.verificaSeTemUsuarioLogado()) {
-                    console.log('Carregar fotos!');
+                instagram.saveAccessToken();
+
+                if (instagram.hasAccessToken()) {
+                    console.log('Load pictures!');
                 } else {
-                    console.log('Exibe: login');
                     sections.show('section-login');
                 }
             },
-            verificaSeTemUsuarioLogado: function () {
-                console.log('Verifica: login');
+            hasAccessToken: function () {
                 return !!localStorage['ic-instagram-token'];
+            },
+            onAccessExpires: function (res, callback) {
+                if (res.meta.code === 400) {
+
+                    if ((!!localStorage['ic-instagram-token']) === true) {
+                        location.hash = '';
+
+                        localStorage['ic-instagram-token'] = '';
+
+                        alert('Your access on InstaCloser has expired, login again.');
+                    } else {
+                        location.hash = '';
+                    }
+
+                    sections.show('section-login');
+                }
+
+                if (typeof callback === 'function') {
+                    callback(res);
+                }
+            },
+            onUnexpectedAjaxError: function (err) {
+
+                if (navigator.onLine === false) {
+                    alert('You are offline :/');
+
+                    /* NEXT: Add offline screen with a reload button */
+                } else {
+                    console.log('something is wrong, I do not know what', err);
+                }
+
+                location.hash = '';
+
+                alert('Ooops, something is wrong, try login again');
+
+                sections.show('section-login');
+            },
+            hasValidAccessToken: function () {
+                $.ajax({
+                    url: 'https://api.instagram.com/v1/users/self/feed',
+                    dataType: 'jsonp',
+                    data: {
+                        access_token: localStorage['ic-instagram-token'],
+                        count: 1
+                    },
+                    success: function (res) {
+                        instagram.onAccessExpires(res);
+                    },
+                    error: function (err) {
+                        instagram.onUnexpectedAjaxError(err);
+                    }
+                });
+            },
+            saveAccessToken: function () {
+                if (localStorage['ic-instagram-token']) {
+                    instagram.hasValidAccessToken();
+                } else {
+                    localStorage['ic-instagram-token'] = location.hash.replace(/^#[\w\W]*(access_token=([\.\d\w]+))[\w\W]*$/i, '$2');
+                }
             }
         };
 

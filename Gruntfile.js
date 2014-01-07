@@ -31,10 +31,13 @@ module.exports = function (grunt) {
             },
             client: {
                 src: ['app/js/{,*}/*.js'],
+                exclude: ['app/js/jquery.*.js'],
                 directives: {
                     browser: true,
                     indent: 4,
-                    devel: true
+                    devel: true,
+                    debug: true,
+                    predef: ['$']
                 }
             }
         },
