@@ -63,8 +63,71 @@
                     sections.show('section-login');
                 }
             },
+            geoOptions: function () {
+                return {
+                    enableHighAccuracy: true,
+                    maximumAge: 30000,
+                    timeout: 27000
+                };
+            },
+            geoCurrent: {},
+            geoSuccess: function (res, callback) {
+                instagram.geoCurrent = res.coords;
+
+                if ($.isFunction(callback)) {
+                    callback(true);
+                }
+            },
+            geoError: function (error, callback) {
+
+                if ($.isFunction(callback)) {
+                    callback(false, error);
+                } else {
+                    // MDN REF: https://developer.mozilla.org/en-US/docs/Web/API/PositionError
+                    if (error.code === 1) {
+                        alert('You must accept the geolocation to use the application');
+                    } else if (error.code === 2) {
+                        alert('Your position is unavailable');
+                    } else if (error.code === 3) {
+                        alert('Your position is taking too long');
+                    }
+                }
+            },
+            watchGeolocation: function (callback) {
+                instagram.geoWatchID = navigator.geolocation.watchPosition(
+                    function (res) {
+                        instagram.geoSuccess(res, callback);
+                    },
+                    function (error) {
+                        instagram.geoError(error, callback);
+                    },
+                    instagram.geoOptions()
+                );
+            },
+            geoCurrentPosition: function (callback) {
+
+                instagram.watchGeolocation();
+
+                navigator.geolocation.getCurrentPosition(
+                    function (res) {
+                        instagram.geoSuccess(res, callback);
+                    },
+                    function (error) {
+                        instagram.geoError(error, callback);
+                    },
+                    instagram.geoOptions()
+                );
+            },
             loadPictures: function () {
-                console.log('Load pictures!');
+
+                instagram.geoCurrentPosition(function (success) {
+                    if (success) {
+                        console.log('Load pictures \\o/!');
+                    } else {
+                        console.log('We can\'t load pictures!');
+                    }
+                });
+
             },
             hasAccessToken: function () {
                 return !!localStorage['ic-instagram-token'];
