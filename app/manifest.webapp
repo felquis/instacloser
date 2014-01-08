@@ -4,8 +4,8 @@
     "launch_path": "/index.html",
     "description": "See instagram photos taken around you based in you geolocation.",
     "icons": {
-        "128": "/img/logo128.jpg",
-        "60": "/img/logo60.jpg"
+        "128": "/img/instacloser-icon128",
+        "60": "/img/instacloser-icon60.png"
     },
     "developer": {
         "name": "Felquis Gimenes",
