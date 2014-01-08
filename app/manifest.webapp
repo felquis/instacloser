@@ -2,7 +2,7 @@
     "version": "1",
     "name": "InstaCloser",
     "launch_path": "/index.html",
-    "description": "See instagram photos taken around you based in you geolocation.",
+    "description": "See instagram photos taken around you based in your geolocation.",
     "icons": {
         "128": "/img/instacloser-icon128",
         "60": "/img/instacloser-icon60.png"
