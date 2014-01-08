@@ -58,10 +58,13 @@
                 instagram.saveAccessToken();
 
                 if (instagram.hasAccessToken()) {
-                    console.log('Load pictures!');
+                    instagram.loadPictures();
                 } else {
                     sections.show('section-login');
                 }
+            },
+            loadPictures: function () {
+                console.log('Load pictures!');
             },
             hasAccessToken: function () {
                 return !!localStorage['ic-instagram-token'];
