@@ -185,11 +185,11 @@
                 });
             },
             saveAccessToken: function () {
-                if (localStorage['ic-instagram-token']) {
-                    instagram.hasValidAccessToken();
-                } else {
+                if (!localStorage['ic-instagram-token']) {
                     localStorage['ic-instagram-token'] = location.hash.replace(/^#[\w\W]*(access_token=([\.\d\w]+))[\w\W]*$/i, '$2');
                 }
+
+                instagram.hasValidAccessToken();
             }
         };
 
