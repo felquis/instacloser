@@ -126,7 +126,7 @@
 
                     distance = instagram.calcDistance(this.location.latitude, this.location.longitude);
 
-                    $item = $('<li>').addClass('pictures-list-item');
+                    $item = $('<li>').addClass('pictures-list-item media-type-' + this.type);
 
                     $img = $('<img>').attr('src', this.images.standard_resolution.url);
 
