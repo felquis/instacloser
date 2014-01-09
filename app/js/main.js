@@ -118,6 +118,26 @@
                     instagram.geoOptions()
                 );
             },
+            processHTML: function (data) {
+                var $item, $img, $local,
+                    distance = '472m',
+                    $itemsList = $('<ul>').addClass('pictures-list');
+
+                $.each(data.data, function () {
+                    $item = $('<li>').addClass('pictures-list-item');
+
+                    $img = $('<img>').attr('src', this.images.standard_resolution.url);
+
+                    $local = $('<div class="local">@' + this.user.username + ' is ' + distance + ' away</div>');
+
+                    $item.append($local);
+                    $item.append($img);
+
+                    $itemsList.append($item);
+                });
+
+                return $itemsList;
+            },
             loadPictures: function () {
 
                 instagram.geoCurrentPosition(function (success) {
@@ -132,10 +152,15 @@
                                 access_token: localStorage['ic-instagram-token']
                             },
                             success: function (success) {
-                                console.log('success', success);
-                                debugger;
+                                if (success.meta.code === 200) {
+                                    $('.section-photo-list').html(instagram.processHTML(success));
+
+                                    sections.show('section-photo-list');
+                                }
                             },
                             error: function (error) {
+                                alert('Something is wrong, but I don\'t know what');
+
                                 console.log('error', error);
                             }
                         });
