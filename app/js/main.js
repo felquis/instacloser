@@ -119,11 +119,13 @@
                 );
             },
             processHTML: function (data) {
-                var $item, $img, $local,
-                    distance = '472m',
+                var $item, $img, $local, distance = '',
                     $itemsList = $('<ul>').addClass('pictures-list');
 
                 $.each(data.data, function () {
+
+                    distance = instagram.calcDistance(this.location.latitude, this.location.longitude);
+
                     $item = $('<li>').addClass('pictures-list-item');
 
                     $img = $('<img>').attr('src', this.images.standard_resolution.url);
@@ -231,6 +233,36 @@
                 }
 
                 instagram.hasValidAccessToken();
+            },
+            calcDistance: function (lat, lng, unit) {
+                var radlat1 = Math.PI * instagram.geoCurrent.latitude / 180,
+                    radlat2 = Math.PI * lat / 180,
+
+                    theta = instagram.geoCurrent.longitude - lng,
+                    radtheta = Math.PI * theta / 180,
+                    dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+
+                dist = Math.acos(dist);
+                dist = dist * 180 / Math.PI;
+                dist = dist * 60 * 1.1515;
+
+                unit = (unit !== 'N') ? 'K' : unit;
+
+                if (unit === 'K') {
+                    dist = dist * 1.609344;
+                }
+
+                if (unit === 'N') {
+                    dist = dist * 0.8684;
+                }
+
+                if (dist < 1) {
+                    dist = Math.round(dist * 1000) + 'm';
+                } else {
+                    dist = dist.toFixed(2) + 'Km';
+                }
+
+                return dist;
             }
         };
 
