@@ -150,7 +150,6 @@
                             data: {
                                 lat: instagram.geoCurrent.latitude,
                                 lng: instagram.geoCurrent.longitude,
-                                distance: 5000,
                                 access_token: localStorage['ic-instagram-token']
                             },
                             success: function (success) {
