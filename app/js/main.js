@@ -122,7 +122,23 @@
 
                 instagram.geoCurrentPosition(function (success) {
                     if (success) {
-                        console.log('Load pictures \\o/!');
+                        $.ajax({
+                            url: 'https://api.instagram.com/v1/media/search',
+                            dataType: 'jsonp',
+                            data: {
+                                lat: instagram.geoCurrent.latitude,
+                                lng: instagram.geoCurrent.longitude,
+                                distance: 5000,
+                                access_token: localStorage['ic-instagram-token']
+                            },
+                            success: function (success) {
+                                console.log('success', success);
+                                debugger;
+                            },
+                            error: function (error) {
+                                console.log('error', error);
+                            }
+                        });
                     } else {
                         console.log('We can\'t load pictures!');
                     }
