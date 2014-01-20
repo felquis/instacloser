@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VideoJS</title>
+    <link rel="stylesheet" href="../app/css/main.css">
+</head>
+<body>
+    <p>Oaa</p>
+
+    <a href="#" class="click">Add vídeo</a>
+
+    <script src="../app/js/video.js"></script>
+    <script>
+        videojs.options.flash.swf = '../app/swf/video-js.swf'
+    </script>
+    <script src="../app/js/jquery.custom.min.js"></script>
+    <script>
+        $('.click').on('click', function (event) {
+            event.preventDefault();
+
+            var time = 'a-' + (new Date()).getTime();
+
+            var html = '<video id="' + time + '" class="video-js vjs-default-skin" \
+                                controls preload="auto" width="640" height="264" \
+                                poster="http://distilleryimage9.s3.amazonaws.com/0d2c261278e511e3a6bb1272bb146ed9_8.jpg"> \
+                            <source src="http://distilleryimage9.s3.amazonaws.com/0d2c261278e511e3a6bb1272bb146ed9_101.mp4" type="video/mp4" /> \
+                        </video>';
+
+            $('body').append(html);
+
+            console.log(time);
+
+            videojs(time, { example_option: true }, function(){
+                console.log('Feito!');
+            })
+        });
+    </script>
+</body>
+</html>
