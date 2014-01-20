@@ -19,6 +19,14 @@ module.exports = function (grunt) {
                     base: '.temp/',
                     hostname: '*'
                 }
+            },
+            buildtest: {
+                options: {
+                    port: 8080,
+                    keepalive : true,
+                    base: 'build/',
+                    hostname: '*'
+                }
             }
         },
         jslint: {
