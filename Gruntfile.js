@@ -95,7 +95,8 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'app/',
                 src: '**',
-                dest: 'build/'
+                dest: 'build/',
+                dot: true
             }
         },
         clean: ['.temp', 'build']
