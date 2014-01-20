@@ -97,7 +97,8 @@ module.exports = function (grunt) {
                 src: '**',
                 dest: 'build/'
             }
-        }
+        },
+        clean: ['.temp', 'build']
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -105,7 +106,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-preprocess');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('default', ['env:dev', 'jslint', 'copy:dev', 'preprocess:dev', 'connect:dev']);
-    grunt.registerTask('build', ['env:build', 'jslint', 'copy:build', 'preprocess:build']);
+    grunt.registerTask('default', ['env:dev', 'jslint', 'clean', 'copy:dev', 'preprocess:dev', 'connect:dev']);
+    grunt.registerTask('build', ['env:build', 'jslint', 'clean', 'copy:build', 'preprocess:build']);
 };
