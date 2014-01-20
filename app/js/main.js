@@ -74,6 +74,8 @@
             geoSuccess: function (res, callback) {
                 instagram.geoCurrent = res.coords;
 
+                ga('send', 'event', 'geoAccuracy', res.coords.accuracy);
+
                 if ($.isFunction(callback)) {
                     callback(true);
                 }
@@ -82,15 +84,21 @@
 
                 if ($.isFunction(callback)) {
                     callback(false, error);
-                } else {
-                    // MDN REF: https://developer.mozilla.org/en-US/docs/Web/API/PositionError
-                    if (error.code === 1) {
-                        alert('You must accept the geolocation to use the application');
-                    } else if (error.code === 2) {
-                        alert('Your position is unavailable');
-                    } else if (error.code === 3) {
-                        alert('Your position is taking too long');
-                    }
+                }
+
+                // MDN REF: https://developer.mozilla.org/en-US/docs/Web/API/PositionError
+                if (error.code === 1) {
+                    ga('send', 'event', 'geoError', 'PERMISSION_DENIED');
+
+                    alert('You must accept the geolocation to use the application');
+                } else if (error.code === 2) {
+                    ga('send', 'event', 'geoError', 'POSITION_UNAVAILABLE');
+
+                    alert('Your position is unavailable');
+                } else if (error.code === 3) {
+                    ga('send', 'event', 'geoError', 'TIMEOUT');
+
+                    alert('Your position is taking too long');
                 }
             },
             watchGeolocation: function (callback) {
@@ -142,8 +150,13 @@
             },
             loadPictures: function () {
 
+                var startDate = new Date().getTime();
+
                 instagram.geoCurrentPosition(function (success) {
                     if (success) {
+
+                        ga('send', 'event', 'instagramAPI', 'v1/media/search', 'call');
+
                         $.ajax({
                             url: 'https://api.instagram.com/v1/media/search',
                             dataType: 'jsonp',
@@ -157,15 +170,24 @@
                                     $('.section-photo-list').html(instagram.processHTML(success));
 
                                     sections.show('section-photo-list');
+
+                                    ga('send', 'event', 'instagramAPI', 'v1/media/search', 'call-success');
                                 }
                             },
-                            error: function (error) {
+                            error: function () {
                                 alert('Something is wrong, but I don\'t know what');
 
-                                console.log('error', error);
+                                ga('send', 'event', 'instagramAPI', 'v1/media/search', 'call-error');
+                            },
+                            complete: function () {
+                                var endDate = new Date().getTime(),
+                                    secondsToLoad = (endDate - startDate) / 1000;
+
+                                ga('send', 'event', 'instagramAPI', 'v1/media/search', secondsToLoad.toFixed(1));
                             }
                         });
                     } else {
+                        ga('send', 'event', 'instagramAPI', 'We can\'t load pictures');
                         console.log('We can\'t load pictures!');
                     }
                 });
@@ -182,7 +204,10 @@
 
                         localStorage['ic-instagram-token'] = '';
 
+                        ga('send', 'event', 'instagramAPI', 'access-expired');
+
                         alert('Your access on InstaCloser has expired, login again.');
+
                     } else {
                         location.hash = '';
                     }
@@ -194,19 +219,22 @@
                     callback(res);
                 }
             },
-            onUnexpectedAjaxError: function (err) {
+            onUnexpectedAjaxError: function () {
 
                 if (navigator.onLine === false) {
+                    ga('send', 'event', 'offline');
+
                     alert('You are offline :/');
 
+                    return false;
+
                     /* NEXT: Add offline screen with a reload button */
-                } else {
-                    console.log('something is wrong, I do not know what', err);
                 }
 
                 location.hash = '';
 
                 alert('Ooops, something is wrong, try login again');
+                ga('send', 'event', 'unknown-error', 'try-login-again');
 
                 sections.show('section-login');
             },
@@ -229,6 +257,7 @@
             saveAccessToken: function () {
                 if (!localStorage['ic-instagram-token']) {
                     localStorage['ic-instagram-token'] = location.hash.replace(/^#[\w\W]*(access_token=([\.\d\w]+))[\w\W]*$/i, '$2');
+
                 }
 
                 instagram.hasValidAccessToken();

@@ -19,6 +19,14 @@ module.exports = function (grunt) {
                     base: '.temp/',
                     hostname: '*'
                 }
+            },
+            buildtest: {
+                options: {
+                    port: 8080,
+                    keepalive : true,
+                    base: 'build/',
+                    hostname: '*'
+                }
             }
         },
         jslint: {
@@ -37,7 +45,7 @@ module.exports = function (grunt) {
                     indent: 4,
                     devel: true,
                     debug: true,
-                    predef: ['$']
+                    predef: ['$', 'ga']
                 }
             }
         },
@@ -67,7 +75,7 @@ module.exports = function (grunt) {
             },
             build: {
                 src : 'app/index.html',
-                dest : '.temp/index.html',
+                dest : 'build/index.html',
                 options: {
                     context : {
                         instagram_client_id: '05d5219366e24a3bb9f4d7eec6427e52',
@@ -87,9 +95,11 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'app/',
                 src: '**',
-                dest: 'build/'
+                dest: 'build/',
+                dot: true
             }
-        }
+        },
+        clean: ['.temp', 'build']
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -97,7 +107,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-preprocess');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('default', ['env:dev', 'jslint', 'copy:dev', 'preprocess:dev', 'connect:dev']);
-    grunt.registerTask('build', ['env:build', 'jslint', 'copy:build', 'preprocess:build']);
+    grunt.registerTask('default', ['env:dev', 'jslint', 'clean', 'copy:dev', 'preprocess:dev', 'connect:dev']);
+    grunt.registerTask('build', ['env:build', 'jslint', 'clean', 'copy:build', 'preprocess:build']);
 };
