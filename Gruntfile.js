@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                     indent: 4,
                     devel: true,
                     debug: true,
-                    predef: ['$']
+                    predef: ['$', 'ga']
                 }
             }
         },
