@@ -75,7 +75,7 @@ module.exports = function (grunt) {
             },
             build: {
                 src : 'app/index.html',
-                dest : '.temp/index.html',
+                dest : 'build/index.html',
                 options: {
                     context : {
                         instagram_client_id: '05d5219366e24a3bb9f4d7eec6427e52',
