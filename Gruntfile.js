@@ -39,13 +39,14 @@ module.exports = function (grunt) {
             },
             client: {
                 src: ['app/js/{,*}/*.js'],
-                exclude: ['app/js/jquery.*.js'],
+                exclude: ['app/js/jquery.*.js',
+                          'app/js/video.js'],
                 directives: {
                     browser: true,
                     indent: 4,
                     devel: true,
                     debug: true,
-                    predef: ['$', 'ga']
+                    predef: ['$', 'ga', 'videojs']
                 }
             }
         },

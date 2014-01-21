@@ -127,23 +127,30 @@
                 );
             },
             processHTML: function (data) {
-                var $item, $img, $local, distance = '',
-                    $itemsList = $('<ul>').addClass('pictures-list');
+                var $itemsList = $('<ul>').addClass('pictures-list'),
+
+                    createItem = function (media) {
+                        var distance = instagram.calcDistance(media.location.latitude, media.location.longitude),
+                            $img,
+                            $local,
+                            $item = $('<li>').addClass('pictures-list-item media-type-' + media.type);
+
+                        if (media.type === 'video') {
+                            $item.attr('data-video-file', media.videos.low_resolution.url);
+                        }
+
+                        $img = $('<img>').attr('src', media.images.standard_resolution.url);
+
+                        $local = $('<div class="local">@' + media.user.username + ' is ' + distance + ' away</div>');
+
+                        $item.append($local);
+                        $item.append($img);
+
+                        return $item;
+                    };
 
                 $.each(data.data, function () {
-
-                    distance = instagram.calcDistance(this.location.latitude, this.location.longitude);
-
-                    $item = $('<li>').addClass('pictures-list-item media-type-' + this.type);
-
-                    $img = $('<img>').attr('src', this.images.standard_resolution.url);
-
-                    $local = $('<div class="local">@' + this.user.username + ' is ' + distance + ' away</div>');
-
-                    $item.append($local);
-                    $item.append($img);
-
-                    $itemsList.append($item);
+                    $itemsList.append(createItem(this));
                 });
 
                 return $itemsList;
@@ -168,6 +175,8 @@
                             success: function (success) {
                                 if (success.meta.code === 200) {
                                     $('.section-photo-list').html(instagram.processHTML(success));
+
+                                    instagram.createVideos();
 
                                     sections.show('section-photo-list');
 
@@ -291,6 +300,37 @@
                 }
 
                 return dist;
+            },
+            createVideos: function () {
+                var $video, $source, videoID;
+
+                $('.media-type-video').each(function (i, elem) {
+                    $video = $('<video>');
+                    $source = $('<source />');
+                    videoID = 'videojs-' + i + '-' + (new Date()).getTime();
+
+                    $source.attr({
+                        src: $(this).attr('data-video-file'),
+                        type: 'video/mp4'
+                    });
+
+                    $video.attr({
+                        'id': videoID
+                    });
+
+                    $video.addClass('video-js video vjs-default-skin');
+
+                    $video.append($source);
+
+                    $(elem).append($video);
+
+                    videojs(videoID, {
+                        controls: true,
+                        autoplay: false,
+                        preload: 'none',
+                        poster: $(this).find('img').get(0).src
+                    });
+                });
             }
         };
 
@@ -299,6 +339,8 @@
     */
     setContentHeight.set();
     setContentHeight.setOnResize();
+
+    videojs.options.flash.swf = location.protocol + '//' + location.host + '/swf/video-js.swf';
 
     sections.show('section-loading');
     instagram.init();
