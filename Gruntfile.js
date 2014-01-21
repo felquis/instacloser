@@ -80,7 +80,7 @@ module.exports = function (grunt) {
                 options: {
                     context : {
                         instagram_client_id: '05d5219366e24a3bb9f4d7eec6427e52',
-                        instagram_redirect_uri: 'http://instacloser.joel-ipsum.com/'
+                        instagram_redirect_uri: 'http://instacloser.com/'
                     }
                 }
             }
