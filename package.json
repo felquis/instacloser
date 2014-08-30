@@ -1,7 +1,7 @@
 {
-  "name": "teste",
+  "name": "InstaCloser",
   "version": "1.0.0",
-  "description": "teste: An Ionic project",
+  "description": "See instagram photos taken around you based in your geolocation.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
