@@ -4,3 +4,4 @@
 .temp/
 access.log
 error.log
+www/lib/
