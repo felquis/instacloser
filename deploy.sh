@@ -1,1 +1,0 @@
-rsync -arvuz ./app root@joel-ipsum.com:/var/www/instacloser/
