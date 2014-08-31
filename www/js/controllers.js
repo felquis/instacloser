@@ -31,7 +31,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 })
 
-.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation) {
+.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate) {
 
   if (!localStorage['ic-instagram-token']) {
     $state.go('app.login');
@@ -49,6 +49,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
     $cordovaGeolocation.getCurrentPosition().then(function(position) {
       $scope.loadMore(position.coords);
+      $ionicScrollDelegate.scrollTop();
     }, function(err) {
       console.error('Algo deu errado no getCurrentPosition', err);
     });
