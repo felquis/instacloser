@@ -6,7 +6,7 @@
   <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->
   <ion-content class="has-header">
     <div class="list">
-      <div ng-repeat="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+      <div ng-repeat="item in loadedItems">
         <div class="card ic-card">
           <!--
             <div class="item item-avatar">
@@ -17,7 +17,7 @@
           -->
 
           <div class="item item-image embed-container ratio-1-1">
-            <img ng-src="http://lorempixel.com/600/600/cats/">
+            <img ng-src="{{ item.images.standard_resolution.url }}">
           </div>
 
           <i class="ion-loading-c embed-container-loading"></i>
