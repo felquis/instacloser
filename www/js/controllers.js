@@ -46,9 +46,11 @@ angular.module('starter.controllers', ['ngCordova'])
 
     $scope.loading = true;
     $scope.loadedItems = [];
+    $scope.coords;
 
     $cordovaGeolocation.getCurrentPosition().then(function(position) {
       $scope.loadMore(position.coords);
+      $scope.coords = position.coords;
       $ionicScrollDelegate.scrollTop();
     }, function(err) {
       console.error('Algo deu errado no getCurrentPosition', err);

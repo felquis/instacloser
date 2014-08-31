@@ -29,7 +29,11 @@
           <a class="item item-icon-left dark ic-distance" href="#">
             <i class="icon ion-ios7-location-outline"></i>
 
-            200 miles away
+            <distance
+              from-longitude="{{ coords.longitude }}"
+              from-latitude="{{ coords.latitude }}"
+              to-latitude="{{ item.location.latitude }}"
+              to-longitude="{{ item.location.longitude }}"></distance>
           </a>
         </div>
       </div>
