@@ -14,8 +14,8 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close href="#/app/login">
-          Login
+        <ion-item nav-clear menu-close ng-click="loginOrDie($event)">
+          {{ loginPhrase }}
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/nearby">
           Nearby
