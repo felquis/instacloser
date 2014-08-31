@@ -5,3 +5,4 @@
 access.log
 error.log
 www/lib/
+res/
