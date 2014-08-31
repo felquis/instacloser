@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
   if (!!localStorage['ic-instagram-token']) {
@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('NearbyCtrl', function ($scope, $http, $state) {
+.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation) {
 
   if (!localStorage['ic-instagram-token']) {
     $state.go('app.login');
@@ -40,24 +40,40 @@ angular.module('starter.controllers', [])
   }
 
   $scope.loadedItems = [];
+  $scope.loading = false;
 
-  $scope.loadMore = function (nextPage) {
+  $scope.getPositionAndLoadContent = function () {
+
+    $scope.loading = true;
+    $scope.loadedItems = [];
+
+    $cordovaGeolocation.getCurrentPosition().then(function(position) {
+      $scope.loadMore(position.coords);
+    }, function(err) {
+      console.error('Algo deu errado no getCurrentPosition', err);
+    });
+  }
+
+  $scope.loadMore = function (coords) {
     $http({
       method: 'jsonp',
-      url: ['https://api.instagram.com/v1/media/search?lat=48.858844',
-        'lng=2.294351',
+      url: ['https://api.instagram.com/v1/media/search?lat=' + coords.latitude,
+        'lng=' + coords.longitude,
         'distance=5000',
         'access_token=' + localStorage['ic-instagram-token'],
         'callback=JSON_CALLBACK'].join('&')
     })
     .success(function(success) {
-      console.log(success);
       $scope.loadedItems = success.data;
+      $scope.loading = false;
+
+      console.log(success.data);
     })
     .error(function (err) {
       console.log(err);
+      $scope.loading = false;
     })
   }
 
-  $scope.loadMore();
+  $scope.getPositionAndLoadContent();
 });
