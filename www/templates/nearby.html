@@ -3,11 +3,32 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
 
+  <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->
   <ion-content class="has-header">
-    <ion-list>
-      <ion-item>Teste 1</ion-item>
-      <ion-item>Teste 2</ion-item>
-      <ion-item>Teste 3</ion-item>
-    </ion-list>
+    <div class="list">
+      <div ng-repeat="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+        <div class="card ic-card">
+          <!--
+            <div class="item item-avatar">
+              <img src="http://lorempixel.com/100/100/cats/">
+              <h2>Pretty Hate Machine</h2>
+              <p>Nine Inch Nails</p>
+            </div>
+          -->
+
+          <div class="item item-image embed-container ratio-1-1">
+            <img ng-src="http://lorempixel.com/600/600/cats/">
+          </div>
+
+          <i class="ion-loading-c embed-container-loading"></i>
+
+          <a class="item item-icon-left dark ic-distance" href="#">
+            <i class="icon ion-ios7-location-outline"></i>
+
+            200 miles away
+          </a>
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
