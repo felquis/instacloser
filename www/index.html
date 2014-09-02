@@ -37,5 +37,25 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-43139925-2');ga('send','pageview');
     </script>
+
+    <script>
+      environment = 'prod'
+        , myIp = '192.168.1.107'; // You can use localhost to test on emulator OR the IP of your computer
+                     // Tip: remember to run sh weinre.sh to create Weinre host
+
+      window.onload = function () {
+        /*
+          Mude para true caso queira o remote debug
+        */
+        if (false) {
+          var weinreScript = document.createElement('script');
+
+          weinreScript.type = 'text/javascript';
+          weinreScript.src = 'http://' + myIp + ':8081/target/target-script-min.js#anonymous'
+
+          document.body.appendChild(weinreScript);
+        }
+      };
+    </script>
   </body>
 </html>

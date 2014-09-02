@@ -1,0 +1,1 @@
+weinre --boundHost -all- --httpPort=8081
