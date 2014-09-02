@@ -79,4 +79,83 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.getPositionAndLoadContent();
+
+  var cardInfo, defaultWidth, parentGesture, defaultWidthHalf;
+
+  $scope.cardDragLeft = function(event) {
+    parentGesture = event;
+
+    // Only change card's left if open is different of true
+    if (cardInfo.data('open') === true) {
+      return;
+    }
+
+    cardInfo.css('left', (defaultWidth - event.gesture.distance) + 'px');
+  }
+
+  $scope.cardDragRight = function(event) {
+    parentGesture = event;
+
+    // Only change card's left if open is different of false
+    if (cardInfo.data('open') === false) {
+      return;
+    }
+
+    cardInfo.css('left', event.gesture.distance + 'px');
+  }
+
+  $scope.dragStart = function (event) {
+    cardInfo = angular.element(event.currentTarget.querySelector('.ic-card-info')),
+    defaultWidth = parseFloat(cardInfo.data('width'));
+    defaultWidthHalf = defaultWidth / 2;
+  }
+
+  $scope.dragRelease = function (event) {
+    if (parentGesture.type === 'swipeleft' || parentGesture.type === 'swiperight') {
+      return
+    }
+
+    if (defaultWidthHalf < parentGesture.gesture.distance) {
+      finishAnimationTo[parentGesture.gesture.direction](event);
+    } else {
+      if (parentGesture.gesture.direction === 'left') {
+        finishAnimationTo.right(event);
+      } else if (parentGesture.gesture.direction === 'right') {
+        if ( cardInfo.data('open') === false && event.type !== 'release') {
+          finishAnimationTo.left(event);
+        } else if (cardInfo.data('open') === true) {
+          finishAnimationTo.left(event);
+        }
+      }
+    }
+  }
+
+  $scope.swipeLeft = function (event) {
+    parentGesture = event;
+
+    finishAnimationTo.left(event);
+  }
+
+  $scope.swipeRight = function (event) {
+    parentGesture = event;
+
+    finishAnimationTo.right(event);
+  }
+
+  var finishAnimationTo = {
+    right: function (event) {
+      cardInfo.data('open', false);
+
+      move(cardInfo[0])
+        .add('left', defaultWidth)
+        .end();
+    },
+    left: function(event) {
+      cardInfo.data('open', true);
+
+      move(cardInfo[0])
+        .set('left', 0)
+        .end();
+    }
+  }
 });

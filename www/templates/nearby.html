@@ -8,9 +8,16 @@
   </ion-nav-buttons>
 
   <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->
-  <ion-content class="has-header">
+  <ion-content class="has-header ion-content-nearby">
     <div class="list" ng-if="!loading">
-      <div ng-repeat="item in loadedItems">
+      <div
+        ng-repeat="item in loadedItems"
+        on-drag-left="cardDragLeft($event)"
+        on-drag-right="cardDragRight($event)"
+        on-touch="dragStart($event)"
+        on-release="dragRelease($event)"
+        on-swipe-left="swipeLeft($event)"
+        on-swipe-right="swipeRight($event)">
         <div class="card ic-card">
           <!--
             <div class="item item-avatar">
@@ -35,6 +42,10 @@
               to-latitude="{{ item.location.latitude }}"
               to-longitude="{{ item.location.longitude }}"></distance>
           </a>
+          <card-info class="ic-card-info padding">
+            @{{ item.user.username }}:<br>
+            {{ item.caption.text }}
+          </card-info>
         </div>
       </div>
     </div>

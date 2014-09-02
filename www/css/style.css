@@ -82,3 +82,29 @@
 .ratio-1-1 {
     padding-bottom:100%; /* ... */
 }
+
+/*
+  Card info
+*/
+.ic-card-info {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+.ic-card-info-transition {
+  -webkit-transition: left 500ms linear;
+  transition: left 500ms linear;
+}
+
+.ic-card-info-show {
+
+}
+
+.ic-card-info-hide {
+
+}

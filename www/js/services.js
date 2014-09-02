@@ -35,4 +35,18 @@ angular.module('starter.services', [])
       $element.text(dist + ' away')
     }
   }
+})
+
+.directive('cardInfo', function () {
+  return {
+    restrict: 'E',
+    link: function ($scope, $element, $attributes) {
+      var computedStyle = window.getComputedStyle($element.parent()[0])
+
+      $element.css('left', computedStyle.width);
+
+      $element.data('width', computedStyle.width);
+      $element.data('open', false);
+    }
+  }
 });
