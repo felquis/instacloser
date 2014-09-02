@@ -142,8 +142,6 @@ angular.module('starter.controllers', ['ngCordova'])
     .success(function(success) {
       $scope.loadedItems = success.data;
       $scope.loading = false;
-
-      console.log(success.data);
     })
     .error(function (err) {
       console.log(err);
