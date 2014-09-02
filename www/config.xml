@@ -25,6 +25,7 @@
     <preference name="android-installLocation" value="auto" />
 
     <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
 
     <icon src="img/instacloser-icon128.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />

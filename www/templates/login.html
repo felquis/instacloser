@@ -4,11 +4,10 @@
   </ion-nav-buttons>
 
   <ion-pane class="login-button-wrapper">
-    <a
+    <span
       class="login-button"
       ng-if="!loading"
-      href="https://instagram.com/oauth/authorize/?client_id=a2dadbd1d44f4e4a869d3fd3ab8543fc&amp;redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Flogin.html&amp;response_type=token"
-      ng-click="onClickLogin(event)">Instagram login</a>
+      ng-click="onClickLogin($event)">Instagram login</span>
 
       <i class="ion-loading-c" ng-if="loading"></i>
   </ion-pane>

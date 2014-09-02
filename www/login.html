@@ -15,15 +15,15 @@
   </style>
 </head>
 <body>
-
   <div class="login-button-wrapper">
     <i class="ion-loading-c" ng-if="loading"></i>
   </div>
 
   <script>
-    localStorage['ic-instagram-token'] = location.hash.replace(/^#[\w\W]*(access_token=([\.\d\w]+))[\w\W]*$/i, '$2');
-
-    location.href = 'index.html#/app/nearby';
+    window.opener.postMessage({
+      login: true,
+      action: 'login'
+    }, location.protocol + '//' + location.host)
   </script>
 </body>
 </html>
