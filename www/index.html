@@ -39,23 +39,7 @@
     </script>
 
     <script>
-      environment = 'prod'
-        , myIp = 'localhost'; // You can use localhost to test on emulator OR the IP of your computer
-                     // Tip: remember to run sh weinre.sh to create Weinre host
-
-      window.onload = function () {
-        /*
-          Mude para true caso queira o remote debug
-        */
-        if (false) {
-          var weinreScript = document.createElement('script');
-
-          weinreScript.type = 'text/javascript';
-          weinreScript.src = 'http://' + myIp + ':8081/target/target-script-min.js#anonymous'
-
-          document.body.appendChild(weinreScript);
-        }
-      };
+      environment = 'prod';
     </script>
   </body>
 </html>
