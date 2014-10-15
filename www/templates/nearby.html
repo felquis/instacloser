@@ -9,11 +9,6 @@
 
   <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->
   <ion-content class="has-header ion-content-nearby">
-    <ion-refresher
-      pulling-text="Pull to refresh..."
-      on-refresh="getPositionAndLoadContent()">
-    </ion-refresher>
-
     <div class="list" ng-if="!loading">
       <div
         ng-repeat="item in loadedItems"
