@@ -1,1 +1,1 @@
-rsync -arvuz ./www root@instacloser.com:/var/www/instacloser/build
+rsync -avz -e ssh ./www/ root@instacloser.com:/var/www/instacloser/www/
