@@ -109,7 +109,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 })
 
-.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate) {
+.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate, $window) {
 
   if (!localStorage['ic-instagram-token']) {
     $state.go('app.login');
@@ -166,6 +166,8 @@ angular.module('starter.controllers', ['ngCordova'])
       return;
     }
 
+    angular.element(document.querySelector('ion-content.ion-content-nearby')).css('overflow', 'hidden');
+
     cardInfo.css('left', (defaultWidth - event.gesture.distance) + 'px');
   }
 
@@ -177,6 +179,8 @@ angular.module('starter.controllers', ['ngCordova'])
       return;
     }
 
+    angular.element(document.querySelector('ion-content.ion-content-nearby')).css('overflow', 'hidden');
+
     cardInfo.css('left', event.gesture.distance + 'px');
   }
 
@@ -187,6 +191,8 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.dragRelease = function (event) {
+    angular.element(document.querySelector('ion-content.ion-content-nearby')).css('overflow', 'auto');
+
     if (parentGesture.type === 'swipeleft' || parentGesture.type === 'swiperight') {
       return
     }
