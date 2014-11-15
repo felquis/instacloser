@@ -37,7 +37,6 @@ angular.module('starter.controllers', ['ngCordova'])
     // ('http://*:8080')
     $scope.client_id = 'f4c8a95c47ef41e4a050159f41dad857';
     $scope.baseURL = location.protocol + '//' + location.host;
-    console.log('WTF?', location.href);
   }
 
   $scope.redirect_uri = encodeURIComponent($scope.baseURL + '/login.html');
