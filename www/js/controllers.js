@@ -25,16 +25,22 @@ angular.module('starter.controllers', ['ngCordova'])
     }
   }
 
-  $scope.baseURL = 'http://instacloser.com';
-  $scope.redirect_uri = encodeURIComponent($scope.baseURL + '/login.html');
-
-  if ($scope.baseURL === 'http://localhost:8080') {
+  if (location.host === 'localhost:8080') {
     $scope.client_id = 'a2dadbd1d44f4e4a869d3fd3ab8543fc';
-  } else if ($scope.baseURL === 'http://instacloser.com') {
+    $scope.baseURL = location.protocol + '//' + location.host;
+
+  } else if (location.host === 'instacloser.com') {
     $scope.client_id = '05d5219366e24a3bb9f4d7eec6427e52';
-  } else if ('http://*:8080') {
+    $scope.baseURL = location.protocol + '//' + location.host;
+
+  } else {
+    // ('http://*:8080')
     $scope.client_id = 'f4c8a95c47ef41e4a050159f41dad857';
+    $scope.baseURL = location.protocol + '//' + location.host;
+    console.log('WTF?', location.href);
   }
+
+  $scope.redirect_uri = encodeURIComponent($scope.baseURL + '/login.html');
 })
 
 .controller('LoginCtrl', function ($scope, $state) {
