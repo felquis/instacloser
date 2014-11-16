@@ -28,15 +28,10 @@ angular.module('starter.controllers', ['ngCordova'])
   if (location.host === 'localhost:8080') {
     $scope.client_id = 'a2dadbd1d44f4e4a869d3fd3ab8543fc';
     $scope.baseURL = location.protocol + '//' + location.host;
-
-  } else if (location.host === 'instacloser.com') {
-    $scope.client_id = '05d5219366e24a3bb9f4d7eec6427e52';
-    $scope.baseURL = location.protocol + '//' + location.host;
-
   } else {
-    // ('http://*:8080')
-    $scope.client_id = 'f4c8a95c47ef41e4a050159f41dad857';
-    $scope.baseURL = location.protocol + '//' + location.host;
+    // instacloser.com
+    $scope.client_id = '05d5219366e24a3bb9f4d7eec6427e52';
+    $scope.baseURL = 'http://instacloser.com';
   }
 
   $scope.redirect_uri = encodeURIComponent($scope.baseURL + '/login.html');
