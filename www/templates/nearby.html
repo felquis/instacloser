@@ -1,10 +1,10 @@
 <ion-view title="Nearby">
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-ios7-refresh-outline" ng-click="getPositionAndLoadContent()"></button>
   </ion-nav-buttons>
 
   <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-ios7-refresh-outline" ng-click="getPositionAndLoadContent()"></button>
+    <button ng-click="openPopover($event)" class="button button-icon icon icon-small ion-android-more"></button>
   </ion-nav-buttons>
 
   <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->

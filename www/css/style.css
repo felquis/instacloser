@@ -125,3 +125,7 @@
 .inAppBrowserWrap menu li.disabled {
     color: #777;
 }
+
+.button-icon.icon.icon-small:before {
+  font-size: 20px !important;
+}

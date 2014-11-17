@@ -48,8 +48,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           controller: 'NearbyCtrl'
         }
       }
+    })
+
+    .state('app.config', {
+      url: '/config',
+      views: {
+        'menuContent' :{
+          templateUrl: 'templates/config.html',
+          controller: 'ConfigCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/app/nearby');
 });

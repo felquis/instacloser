@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $ionicPopover) {
 
   $scope.checkAccessToken = function () {
     if (!!localStorage['ic-instagram-token']) {
@@ -24,6 +24,25 @@ angular.module('starter.controllers', ['ngCordova'])
       $state.go('app.login');
     }
   }
+
+  $ionicPopover.fromTemplateUrl('templates/popover-menu.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+
+  // Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
 
   if (location.host === 'localhost:8080') {
     $scope.client_id = 'a2dadbd1d44f4e4a869d3fd3ab8543fc';
@@ -104,7 +123,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 })
 
-.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate, $window) {
+.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate) {
 
   if (!localStorage['ic-instagram-token']) {
     $state.go('app.login');
@@ -150,4 +169,8 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.getPositionAndLoadContent();
+})
+
+.controller('ConfigCtrl', function ($scope) {
+
 });

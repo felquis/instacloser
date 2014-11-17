@@ -1,0 +1,15 @@
+<ion-view title="Configuration">
+
+  <ion-nav-buttons side="right">
+    <button ng-click="openPopover($event)" class="button button-icon icon icon-small ion-android-more"></button>
+  </ion-nav-buttons>
+
+  <!-- Use overflow-scroll="true" on `ion-content` to disable Ionic's Scroll  -->
+  <ion-content class="has-header ion-content-nearby" overflow-scroll="true">
+    <div class="list" ng-if="!loading">
+      <div class="item" ng-click="loginOrDie()">
+        {{ loginPhrase }}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
