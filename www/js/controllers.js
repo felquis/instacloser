@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $ionicPopover) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state, $ionicPopover, $ga) {
 
   $scope.checkAccessToken = function () {
     if (!!localStorage['ic-instagram-token']) {
@@ -17,6 +17,8 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.loginOrDie = function(event) {
     if (!!localStorage['ic-instagram-token']) {
       localStorage.removeItem('ic-instagram-token');
+      $ga.trackEvent('click', 'logout')
+
       $state.go('app.login');
       $scope.logged = true;
       $scope.loginPhrase = 'Login';
@@ -33,6 +35,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.openPopover = function($event) {
     $scope.popover.show($event);
+    $ga.trackEvent('click', 'openpopover');
   };
 
   $scope.closePopover = function() {
@@ -56,7 +59,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.redirect_uri = encodeURIComponent($scope.baseURL + '/login.html');
 })
 
-.controller('LoginCtrl', function ($scope, $state) {
+.controller('LoginCtrl', function ($scope, $state, $ga) {
   /*
     TODO:
       To logout a user try open an InAppBrowser to > https://instagram.com/accounts/logout/
@@ -70,6 +73,8 @@ angular.module('starter.controllers', ['ngCordova'])
   window.popup = '';
 
   $scope.onClickLogin = function (event) {
+
+    $ga.trackEvent('click', 'login');
 
     $scope.loading = true;
 
@@ -87,6 +92,7 @@ angular.module('starter.controllers', ['ngCordova'])
           // If exist, do not do nothing.
         } else {
           localStorage['ic-instagram-token'] = popup.location.hash.replace(/^#[\w\W]*(access_token=([\.\d\w]+))[\w\W]*$/i, '$2');
+          $ga.trackEvent('open', 'loginsaved');
         }
 
         $scope.checkAccessToken();
@@ -123,10 +129,11 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 })
 
-.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate) {
+.controller('NearbyCtrl', function ($scope, $http, $state, $cordovaGeolocation, $ionicScrollDelegate, $ga) {
 
   if (!localStorage['ic-instagram-token']) {
     $state.go('app.login');
+    $ga.trackEvent('open', 'notloggedin');
 
     return
   }
@@ -150,6 +157,9 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.loadMore = function (coords) {
+
+    $ga.trackEvent('click', 'loadmore');
+
     $http({
       method: 'jsonp',
       url: ['https://api.instagram.com/v1/media/search?lat=' + coords.latitude,
@@ -161,6 +171,8 @@ angular.module('starter.controllers', ['ngCordova'])
     .success(function(success) {
       $scope.loadedItems = success.data;
       $scope.loading = false;
+
+      $ga.trackPageview($state.href($state.current.name));
     })
     .error(function (err) {
       console.log(err);

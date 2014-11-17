@@ -35,4 +35,47 @@ angular.module('starter.services', [])
       $element.text(dist + ' away')
     }
   }
+})
+
+.service('$ga', function ($rootScope, $state, $log) {
+
+  var canTrackIt = false;
+
+  var setUp = function (UA) {
+    ga('create', UA)
+    ga('send', 'pageview', 'homepage');
+    canTrackIt = true;
+  },
+  trackIt = function (run) {
+    if (trackIt) {
+      run();
+    }
+  },
+  trackPageview = function (url) {
+    trackIt(function () {
+      ga('send', 'pageview', url);
+    });
+
+    $log.debug('send', 'pageview', url);
+  },
+  trackEvent = function (eventType, eventName) {
+
+    trackIt(function () {
+      ga('send', 'event', eventType, eventName);
+    });
+
+    $log.debug('send', 'event', eventType, eventName);
+  }
+
+  $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+    if ($state.current.name === 'app.nearby') { return }
+
+    trackPageview($state.href(toState.name));
+  });
+
+  return {
+    setUp: setUp,
+    trackPageview: trackPageview,
+    trackEvent: trackEvent
+  }
 });
