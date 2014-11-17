@@ -11,22 +11,8 @@
   <ion-content class="has-header ion-content-nearby" overflow-scroll="true">
     <div class="list" ng-if="!loading">
       <div
-        ng-repeat="item in loadedItems"
-        on-drag-left="cardDragLeft($event)"
-        on-drag-right="cardDragRight($event)"
-        on-touch="dragStart($event)"
-        on-release="dragRelease($event)"
-        on-swipe-left="swipeLeft($event)"
-        on-swipe-right="swipeRight($event)">
+        ng-repeat="item in loadedItems">
         <div class="card ic-card">
-          <!--
-            <div class="item item-avatar">
-              <img src="http://lorempixel.com/100/100/cats/">
-              <h2>Pretty Hate Machine</h2>
-              <p>Nine Inch Nails</p>
-            </div>
-          -->
-
           <div class="item item-image embed-container ratio-1-1">
             <img ng-src="{{ item.images.standard_resolution.url }}">
           </div>
